@@ -22,7 +22,6 @@ namespace FileBulkDateChanger
                 foreach (var driveInfo in DriveInfo.GetDrives())
                 {
                     var path = driveInfo.RootDirectory.FullName;
-                    Console.WriteLine("Scanning " + path);
                     ScanAndFix(path);
                     Console.WriteLine(new string('-', 30) + Environment.NewLine + "Completed.");
                 }
@@ -33,7 +32,7 @@ namespace FileBulkDateChanger
 
         private static void ScanAndFix(string path)
         {
-            Console.WriteLine("Finding invalid modified date DLLs in " + path);
+            Console.WriteLine("Scanning " + path);
 
             var files = FindInvalidModifiedDateDlls(path);
 
