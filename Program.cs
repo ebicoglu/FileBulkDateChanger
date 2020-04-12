@@ -23,7 +23,7 @@ namespace FileBulkDateChanger
                 {
                     var path = driveInfo.RootDirectory.FullName;
                     ScanAndFix(path);
-                    Console.WriteLine(new string('-', 30) + Environment.NewLine + "Completed.");
+                    Console.WriteLine(new string('-', 30) + Environment.NewLine + "All completed :)");
                 }
             }
 
@@ -53,7 +53,7 @@ namespace FileBulkDateChanger
                     SetLastWriteTime(file);
                 }
 
-                Console.WriteLine("Completed.");
+                Console.WriteLine("Finished " + path);
             }
 
         }
