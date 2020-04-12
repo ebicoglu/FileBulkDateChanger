@@ -4,9 +4,9 @@ D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\bin\Release\netcoreapp3.
 D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\bin\Release\netcoreapp3.1\FileBulkDateChanger.runtimeconfig.dev.json
 D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\bin\Release\netcoreapp3.1\FileBulkDateChanger.dll
 D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\bin\Release\netcoreapp3.1\FileBulkDateChanger.pdb
+D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\obj\Release\netcoreapp3.1\FileBulkDateChanger.csproj.CoreCompileInputs.cache
 D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\obj\Release\netcoreapp3.1\FileBulkDateChanger.AssemblyInfoInputs.cache
 D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\obj\Release\netcoreapp3.1\FileBulkDateChanger.AssemblyInfo.cs
 D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\obj\Release\netcoreapp3.1\FileBulkDateChanger.dll
 D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\obj\Release\netcoreapp3.1\FileBulkDateChanger.pdb
-D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\obj\Release\netcoreapp3.1\FileBulkDateChanger.csproj.CoreCompileInputs.cache
 D:\Alper\Github\FileBulkDateChanger\FileBulkDateChanger\obj\Release\netcoreapp3.1\FileBulkDateChanger.genruntimeconfig.cache
