@@ -8,18 +8,34 @@ namespace FileBulkDateChanger
     internal class Program
     {
         public static string SearchPattern = "*.dll";
-        public static string RootDirectory = @"C:\";
+        private const int MinValidYear = 2000;
+        private static readonly DateTime NewDate = new DateTime(2000, 1, 1);
 
         private static void Main(string[] args)
         {
             if (args.Length > 0 && !string.IsNullOrWhiteSpace(args[0]))
             {
-                RootDirectory = args[0];
+                ScanAndFix(args[0]);
+            }
+            else
+            {
+                foreach (var driveInfo in DriveInfo.GetDrives())
+                {
+                    var path = driveInfo.RootDirectory.FullName;
+                    Console.WriteLine("Scanning " + path);
+                    ScanAndFix(path);
+                    Console.WriteLine(new string('-', 30) + Environment.NewLine + "Completed.");
+                }
             }
 
-            Console.WriteLine("Finding invalid modified date DLLs in " + RootDirectory);
+            Console.ReadKey();
+        }
 
-            var files = FindInvalidModifiedDateDlls();
+        private static void ScanAndFix(string path)
+        {
+            Console.WriteLine("Finding invalid modified date DLLs in " + path);
+
+            var files = FindInvalidModifiedDateDlls(path);
 
             if (files == null || !files.Any())
             {
@@ -28,30 +44,41 @@ namespace FileBulkDateChanger
             else
             {
                 Console.WriteLine(files.Count + " invalid modified date DLL(s) found.");
-                var newDate = DateTime.Today;
 
                 for (var i = 0; i < files.Count(); i++)
                 {
                     var file = files[i];
+
                     Console.WriteLine((i + 1) + " / " + files.Count + " | " + file);
 
-                    File.SetLastWriteTime(file, newDate);
+                    SetLastWriteTime(file);
                 }
 
                 Console.WriteLine("Completed.");
             }
 
-            Console.ReadKey();
+        }
+
+        private static void SetLastWriteTime(string file)
+        {
+            try
+            {
+                File.SetLastWriteTime(file, NewDate);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Cannot set date for " + file + "! Error: " + ex.Message);
+            }
         }
 
         private static bool IsInvalidDate(string file)
         {
-            return File.GetLastWriteTime(file).Year < 2000;
+            return File.GetLastWriteTime(file).Year < MinValidYear;
         }
 
-        private static List<string> FindInvalidModifiedDateDlls()
+        private static List<string> FindInvalidModifiedDateDlls(string path)
         {
-            var allDlls = FindAccessableFiles(RootDirectory, SearchPattern, true);
+            var allDlls = FindAccessableFiles(path, SearchPattern, true);
             var invalidFiles = new List<string>();
 
             foreach (var dll in allDlls)
